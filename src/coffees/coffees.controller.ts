@@ -16,27 +16,27 @@ export class CoffeesController {
 
   @Get()
   findAll(@Query() paginationQuery) {
-    const { limit, offset } = paginationQuery;
-    return `This action returns all the coffees Limit: ${limit}, Offset: ${offset}`;
+    // const { limit, offset } = paginationQuery;
+    return this.CoffeeService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return `This returns coffee id: ${id}`;
+    return this.CoffeeService.findOne(id);
   }
 
   @Post()
   create(@Body() body) {
-    return body;
+    return this.CoffeeService.create(body);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() body) {
-    return `This action updates #${id} coffee`;
+    return this.CoffeeService.update(id, body);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return `This action removes #${id} coffee`;
+    return this.CoffeeService.remove(id);
   }
 }
