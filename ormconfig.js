@@ -1,4 +1,6 @@
-module.exports = {
+import { DataSource } from 'typeorm';
+
+export default new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5433,
@@ -7,7 +9,5 @@ module.exports = {
   database: 'postgres',
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/migrations/*.js'],
-  cli: {
-    migrationsDir: 'src/migrations',
-  },
-};
+  migrationsTableName: 'migrations',
+});
